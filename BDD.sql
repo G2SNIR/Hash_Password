@@ -1,18 +1,18 @@
 -- Création de la Base de Données
-CREATE DATABASE IF NOT EXISTS sql_injection;
+CREATE DATABASE IF NOT EXISTS password_hash;
 
 -- Création de l utilisateur et attribution des droits
-CREATE USER IF NOT EXISTS 'hacker_sql_injection'@'%' IDENTIFIED BY 'hacker';
-GRANT ALL PRIVILEGES ON sql_injection.* TO 'hacker_sql_injection'@'%'; 
+CREATE USER IF NOT EXISTS 'hasher'@'%' IDENTIFIED BY 'hasher';
+GRANT ALL PRIVILEGES ON password_hash.* TO 'hasher'@'%'; 
 
-USE sql_injection;
+USE password_hash;
 
 -- On supprime toutes les tables si elles existent
 DROP TABLE IF EXISTS utilisateur;
 DROP TABLE IF EXISTS utilisateur_hash;
 
 
--- Création des tables
+-- Création de la table utilisateur
 CREATE TABLE IF NOT EXISTS utilisateur (
     id_utilisateur INT NOT NULL AUTO_INCREMENT,
     pseudo VARCHAR(50),
@@ -20,11 +20,7 @@ CREATE TABLE IF NOT EXISTS utilisateur (
     PRIMARY KEY(id_utilisateur)
 );
 
-INSERT INTO utilisateur(pseudo, mdp) VALUES ('jean','jean1'),('emilie','emilie1'),('john','john1');
+-- Remplissage de la table utilisateur avec quelques valeurs
+INSERT INTO utilisateur(pseudo, mdp) VALUES ('jean','jean1'),('emilie','emilie1'),('john','TousLesMatinsJeMangeDesKeloggs@6h30');
 
-CREATE TABLE IF NOT EXISTS utilisateur_hash (
-    id_utilisateur INT NOT NULL AUTO_INCREMENT,
-    pseudo VARCHAR(50),
-    mdp_hash VARCHAR(255),
-    PRIMARY KEY(id_utilisateur)
-);
+-- Création de la table utilisateur_hash : A FAIRE
